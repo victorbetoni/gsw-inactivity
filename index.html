@@ -12,7 +12,7 @@
   <script>
 
 
-    const url = 'https://corsproxy.io/?' + encodeURIComponent("https://corsproxy.io/?https://api.wynncraft.com/v3/guild/Guardian of Wynn");
+    const url = 'https://corsproxy.io/?' + encodeURIComponent("https://api.wynncraft.com/v3/guild/Guardian of Wynn");
     fetch(url)
       .then(x => x.json())
       .then(resp => {
@@ -25,7 +25,7 @@
         let all = [...chiefs, ...strats, ...captains, ...recruit, ...recruiters];
 
         all.forEach(x => {
-          const url = 'https://corsproxy.io/?' + encodeURIComponent(`https://corsproxy.io/?https://api.wynncraft.com/v3/player/${x}`);
+          const url = 'https://corsproxy.io/?' + encodeURIComponent(`https://api.wynncraft.com/v3/player/${x}`);
           fetch(url, {
             headers: {
               'Access-Control-Allow-Origin:': '*',  
