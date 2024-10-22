@@ -12,14 +12,8 @@
   <script>
 
 
-    fetch("https://corsproxy.io/?https://api.wynncraft.com/v3/guild/Guardian of Wynn", {
-      headers: {
-              'Access-Control-Allow-Origin:': '*',  
-              'Access-Control-Allow-Methods':'GET',
-              'Access-Control-Max-Age': 1000,
-              'Access-Control-Allow-Headers':'*'
-            }
-    })
+    const url = 'https://corsproxy.io/?' + encodeURIComponent("https://corsproxy.io/?https://api.wynncraft.com/v3/guild/Guardian of Wynn");
+    fetch(url)
       .then(x => x.json())
       .then(resp => {
         let members = [];
@@ -31,7 +25,8 @@
         let all = [...chiefs, ...strats, ...captains, ...recruit, ...recruiters];
 
         all.forEach(x => {
-          fetch(`https://corsproxy.io/?https://api.wynncraft.com/v3/player/${x}`, {
+          const url = 'https://corsproxy.io/?' + encodeURIComponent(`https://corsproxy.io/?https://api.wynncraft.com/v3/player/${x}`);
+          fetch(url, {
             headers: {
               'Access-Control-Allow-Origin:': '*',  
               'Access-Control-Allow-Methods':'GET',
