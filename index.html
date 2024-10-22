@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tempo offline GsW</title>
+</head>
+<body>
+  <div id="container">
+
+  </div>
+  <script>
+
+
+    fetch("https://api.wynncraft.com/v3/guild/Guardian of Wynn")
+      .then(x => x.json())
+      .then(resp => {
+        let members = [];
+        let chiefs = Object.keys(resp.members.chief);
+        let strats = Object.keys(resp.members.strategist);
+        let captains = Object.keys(resp.members.captain);
+        let recruiters = Object.keys(resp.members.recruiter);
+        let recruit = Object.keys(resp.members.recruit);
+        let all = [...chiefs, ...strats, ...captains, ...recruit, ...recruiters];
+
+        all.forEach(x => {
+          fetch(`https://api.wynncraft.com/v3/player/${x}`)
+            .then(y => y.json())
+            .then(y => members = [{
+              member: x, 
+              days: (new Date().getTime() - new Date(Date.parse(y.lastJoin)).getTime()) / (1000 * 3600 * 24)
+            }, ...members]).catch(x => console.log(x));
+        });
+
+        setTimeout(() => {
+          members = members.filter(x => x.days != NaN);
+          members.sort((a, b) => b.days - a.days);
+          members.forEach(x => {
+            let el = document.getElementById("container");
+            el.innerHTML += `<a>${x.member} - ${Math.trunc(x.days)} - dias</a><br>`;
+          })
+        }, 10000);
+      })
+
+  </script>
+
+
+
+
+</body>
+</html>
