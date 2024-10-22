@@ -25,8 +25,8 @@
         let all = [...chiefs, ...strats, ...captains, ...recruit, ...recruiters];
 
         all.forEach(x => {
-          const url = 'https://corsproxy.io/?' + encodeURIComponent(`https://api.wynncraft.com/v3/player/${x}`);
-          fetch(url, {
+          const url2 = 'https://corsproxy.io/?' + encodeURIComponent(`https://api.wynncraft.com/v3/player/${x}`);
+          fetch(url2, {
             headers: {
               'Access-Control-Allow-Origin:': '*',  
               'Access-Control-Allow-Methods':'GET',
