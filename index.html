@@ -12,7 +12,7 @@
   <script>
 
 
-    fetch("https://api.wynncraft.com/v3/guild/Guardian of Wynn", {
+    fetch("https://corsproxy.io/?https://api.wynncraft.com/v3/guild/Guardian of Wynn", {
       headers: {
               'Access-Control-Allow-Origin:': '*',  
               'Access-Control-Allow-Methods':'GET',
@@ -31,7 +31,7 @@
         let all = [...chiefs, ...strats, ...captains, ...recruit, ...recruiters];
 
         all.forEach(x => {
-          fetch(`https://api.wynncraft.com/v3/player/${x}`, {
+          fetch(`https://corsproxy.io/?https://api.wynncraft.com/v3/player/${x}`, {
             headers: {
               'Access-Control-Allow-Origin:': '*',  
               'Access-Control-Allow-Methods':'GET',
